@@ -2,6 +2,7 @@ package com.zhangkie.tinyspring.beans.factory;
 
 import com.zhangkie.tinyspring.beans.BeanDefinition;
 import com.zhangkie.tinyspring.beans.PropertyValue;
+import com.zhangkie.tinyspring.beans.converter.StringToPrimitiveConverter;
 
 import java.lang.reflect.Field;
 
@@ -21,7 +22,8 @@ public class AutoWireCapableBeanFactory extends AbstractBeanFactory{
         for(PropertyValue propertyValue:definition.getPropertyValues().getPropertyValues()){
             Field declaredField = bean.getClass().getDeclaredField(propertyValue.getName());
             declaredField.setAccessible(true);
-            declaredField.set(bean,propertyValue.getValue());
+            Object convertObject = StringToPrimitiveConverter.convert((String)propertyValue.getValue(), declaredField.getType());
+            declaredField.set(bean,convertObject);
         }
     }
 
