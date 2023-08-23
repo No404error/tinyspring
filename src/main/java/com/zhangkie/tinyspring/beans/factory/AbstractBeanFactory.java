@@ -15,7 +15,6 @@ public abstract class AbstractBeanFactory implements BeanFactory{
         return beanDefinitionMap.get(beanName).getBean();
     }
 
-    @Override
     public void registerBeanDefinition(String name, BeanDefinition definition) throws Exception {
         Object bean = doCreateBean(definition);
         definition.setBean(bean);
