@@ -6,7 +6,12 @@ import com.zhangkie.tinyspring.beans.PropertyValue;
 import com.zhangkie.tinyspring.beans.PropertyValues;
 import com.zhangkie.tinyspring.beans.factory.AutoWireCapableBeanFactory;
 import com.zhangkie.tinyspring.beans.factory.BeanFactory;
+import com.zhangkie.tinyspring.beans.io.UrlResourceLoader;
+import com.zhangkie.tinyspring.beans.reader.AbstractBeanDefinitionReader;
+import com.zhangkie.tinyspring.beans.reader.XmlBeanDefinitionReader;
 import org.junit.Test;
+
+import java.util.Map;
 
 public class BeanFactoryTest {
 
@@ -28,6 +33,22 @@ public class BeanFactoryTest {
 
         User user = (User)beanFactory.getBean("user");
 
+        System.out.println(user);
+    }
+
+    @Test
+    public void testXmlBeanDefinitionReaderAndGetBean() throws Exception {
+        AbstractBeanDefinitionReader beanDefinitionReader=new XmlBeanDefinitionReader(new UrlResourceLoader());
+        beanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
+
+        Map<String, BeanDefinition> registry = beanDefinitionReader.getRegistry();
+
+        BeanFactory beanFactory=new AutoWireCapableBeanFactory();
+        for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : beanDefinitionReader.getRegistry().entrySet()) {
+            beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());
+        }
+
+        User user = (User)beanFactory.getBean("user");
         System.out.println(user);
     }
 }
