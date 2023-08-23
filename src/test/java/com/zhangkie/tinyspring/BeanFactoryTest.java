@@ -20,6 +20,7 @@ public class BeanFactoryTest {
 
         PropertyValues propertyValues = new PropertyValues();
         propertyValues.addProperty(new PropertyValue("name","cxk"));
+        propertyValues.addProperty(new PropertyValue("id",666666L));
 
         userDefinition.setPropertyValues(propertyValues);
 

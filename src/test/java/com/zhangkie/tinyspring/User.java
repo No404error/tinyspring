@@ -3,11 +3,9 @@ package com.zhangkie.tinyspring;
 public class User {
     private String name;
 
-    public User() {
-    }
+    private Long id;
 
-    public User(String name) {
-        this.name = name;
+    public User() {
     }
 
     public String getName() {
@@ -18,10 +16,19 @@ public class User {
         this.name = name;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
+                ", id=" + id +
                 '}';
     }
 }
