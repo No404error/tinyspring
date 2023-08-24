@@ -1,6 +1,4 @@
-package com.zhangkie.tinyspring.beans.io;
-
-import java.net.URL;
+package com.zhangkie.tinyspring.io;
 
 /**
  * 定义了一个通过resource信息加载resource的方法

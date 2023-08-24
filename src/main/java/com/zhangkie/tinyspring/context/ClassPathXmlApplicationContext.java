@@ -1,10 +1,10 @@
-package com.zhangkie.tinyspring.beans.context;
+package com.zhangkie.tinyspring.context;
 
-import com.zhangkie.tinyspring.beans.BeanDefinition;
-import com.zhangkie.tinyspring.beans.factory.AbstractBeanFactory;
-import com.zhangkie.tinyspring.beans.factory.AutoWireCapableBeanFactory;
-import com.zhangkie.tinyspring.beans.io.UrlResourceLoader;
-import com.zhangkie.tinyspring.beans.reader.XmlBeanDefinitionReader;
+import com.zhangkie.tinyspring.BeanDefinition;
+import com.zhangkie.tinyspring.factory.AbstractBeanFactory;
+import com.zhangkie.tinyspring.factory.AutoWireCapableBeanFactory;
+import com.zhangkie.tinyspring.io.UrlResourceLoader;
+import com.zhangkie.tinyspring.reader.XmlBeanDefinitionReader;
 
 import java.util.Map;
 

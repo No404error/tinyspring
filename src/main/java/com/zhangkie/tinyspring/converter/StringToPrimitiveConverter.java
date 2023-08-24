@@ -1,4 +1,4 @@
-package com.zhangkie.tinyspring.beans.converter;
+package com.zhangkie.tinyspring.converter;
 
 public class StringToPrimitiveConverter {
     public static <T> T convert(String str, Class<T> targetType) {

@@ -1,8 +1,5 @@
 package com.zhangkie.tinyspring.io;
 
-import com.zhangkie.tinyspring.beans.io.Resource;
-import com.zhangkie.tinyspring.beans.io.ResourceLoader;
-import com.zhangkie.tinyspring.beans.io.UrlResourceLoader;
 import org.junit.Assert;
 import org.junit.Test;
 

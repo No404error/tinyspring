@@ -1,4 +1,4 @@
-package com.zhangkie.tinyspring.beans.reader;
+package com.zhangkie.tinyspring.reader;
 
 /**
  * 定义了对bean definition resource进行读取的方法

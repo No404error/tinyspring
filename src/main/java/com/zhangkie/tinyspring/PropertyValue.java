@@ -1,4 +1,4 @@
-package com.zhangkie.tinyspring.beans;
+package com.zhangkie.tinyspring;
 
 /**
  * 用于描述bean具有属性的类

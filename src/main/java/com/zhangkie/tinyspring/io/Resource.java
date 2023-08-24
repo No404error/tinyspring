@@ -1,4 +1,4 @@
-package com.zhangkie.tinyspring.beans.io;
+package com.zhangkie.tinyspring.io;
 
 import java.io.IOException;
 import java.io.InputStream;

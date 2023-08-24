@@ -1,7 +1,7 @@
-package com.zhangkie.tinyspring.beans.reader;
+package com.zhangkie.tinyspring.reader;
 
-import com.zhangkie.tinyspring.beans.BeanDefinition;
-import com.zhangkie.tinyspring.beans.io.ResourceLoader;
+import com.zhangkie.tinyspring.BeanDefinition;
+import com.zhangkie.tinyspring.io.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;

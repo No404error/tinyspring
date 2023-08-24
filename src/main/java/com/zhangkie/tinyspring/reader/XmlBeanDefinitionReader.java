@@ -1,9 +1,9 @@
-package com.zhangkie.tinyspring.beans.reader;
+package com.zhangkie.tinyspring.reader;
 
-import com.zhangkie.tinyspring.beans.BeanDefinition;
-import com.zhangkie.tinyspring.beans.BeanReference;
-import com.zhangkie.tinyspring.beans.PropertyValue;
-import com.zhangkie.tinyspring.beans.io.UrlResourceLoader;
+import com.zhangkie.tinyspring.BeanDefinition;
+import com.zhangkie.tinyspring.PropertyValue;
+import com.zhangkie.tinyspring.BeanReference;
+import com.zhangkie.tinyspring.io.UrlResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

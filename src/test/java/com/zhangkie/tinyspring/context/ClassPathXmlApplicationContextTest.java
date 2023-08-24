@@ -2,7 +2,6 @@ package com.zhangkie.tinyspring.context;
 
 import com.zhangkie.tinyspring.User;
 import com.zhangkie.tinyspring.WorkSpace;
-import com.zhangkie.tinyspring.beans.context.ClassPathXmlApplicationContext;
 import org.junit.Test;
 
 public class ClassPathXmlApplicationContextTest {
