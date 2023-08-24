@@ -5,6 +5,8 @@ public class User {
 
     private Long id;
 
+    private WorkSpace workSpace;
+
     public User() {
     }
 
@@ -22,6 +24,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public WorkSpace getWorkSpace() {
+        return workSpace;
+    }
+
+    public void setWorkSpace(WorkSpace workSpace) {
+        this.workSpace = workSpace;
     }
 
     @Override

@@ -11,6 +11,12 @@
     <bean name="user" class="com.zhangkie.tinyspring.User">
         <property name="name" value="cxk"></property>
         <property name="id" value="111111"></property>
+        <property name="workSpace" ref="workSpace"></property>
+    </bean>
+
+    <bean name="workSpace" class="com.zhangkie.tinyspring.WorkSpace">
+        <property name="name" value="ysc"></property>
+        <property name="user" ref="user"></property>
     </bean>
 
 </beans>
