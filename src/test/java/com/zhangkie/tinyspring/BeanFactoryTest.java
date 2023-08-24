@@ -4,6 +4,7 @@ package com.zhangkie.tinyspring;
 import com.zhangkie.tinyspring.beans.BeanDefinition;
 import com.zhangkie.tinyspring.beans.PropertyValue;
 import com.zhangkie.tinyspring.beans.PropertyValues;
+import com.zhangkie.tinyspring.beans.factory.AbstractBeanFactory;
 import com.zhangkie.tinyspring.beans.factory.AutoWireCapableBeanFactory;
 import com.zhangkie.tinyspring.beans.factory.BeanFactory;
 import com.zhangkie.tinyspring.beans.io.UrlResourceLoader;
@@ -17,7 +18,7 @@ public class BeanFactoryTest {
 
     @Test
     public void testGetBean() throws Exception {
-        BeanFactory beanFactory=new AutoWireCapableBeanFactory();
+        AbstractBeanFactory beanFactory=new AutoWireCapableBeanFactory();
 
         BeanDefinition userDefinition = new BeanDefinition();
 
@@ -43,7 +44,7 @@ public class BeanFactoryTest {
 
         Map<String, BeanDefinition> registry = beanDefinitionReader.getRegistry();
 
-        BeanFactory beanFactory=new AutoWireCapableBeanFactory();
+        AbstractBeanFactory beanFactory=new AutoWireCapableBeanFactory();
         for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : beanDefinitionReader.getRegistry().entrySet()) {
             beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());
         }
