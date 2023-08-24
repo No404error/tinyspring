@@ -4,7 +4,6 @@ import com.zhangkie.tinyspring.beans.BeanDefinition;
 import com.zhangkie.tinyspring.beans.factory.AbstractBeanFactory;
 import com.zhangkie.tinyspring.beans.factory.AutoWireCapableBeanFactory;
 import com.zhangkie.tinyspring.beans.io.UrlResourceLoader;
-import com.zhangkie.tinyspring.beans.reader.AbstractBeanDefinitionReader;
 import com.zhangkie.tinyspring.beans.reader.XmlBeanDefinitionReader;
 
 import java.util.Map;
@@ -39,7 +38,7 @@ public class ClassPathXmlApplicationContext implements ApplicationContext{
     }
 
     @Override
-    public Object getBean(String beanName) {
+    public Object getBean(String beanName) throws Exception {
         return beanFactory.getBean(beanName);
     }
 
