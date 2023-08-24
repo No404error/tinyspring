@@ -1,6 +1,7 @@
 package com.zhangkie.tinyspring.beans.reader;
 
 import com.zhangkie.tinyspring.beans.BeanDefinition;
+import com.zhangkie.tinyspring.beans.BeanReference;
 import com.zhangkie.tinyspring.beans.PropertyValue;
 import com.zhangkie.tinyspring.beans.io.UrlResourceLoader;
 import org.w3c.dom.Document;
@@ -58,6 +59,14 @@ public final class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader{
         getRegistry().put(name,beanDefinition);
     }
 
+    /**
+     * 在为xml中的bean属性进行解析时
+     * 先判断其类型是否为ref
+     * 若为ref则将property的value定义为BeanRef类型,在后续bean组装属性的阶段创建引用类型的属性值
+     * 其余则正常存入
+     * @param element
+     * @param beanDefinition
+     */
     private void processBeanProperty(Element element, BeanDefinition beanDefinition) {
         NodeList propertyNodes = element.getElementsByTagName("property");
         for(int i=0;i<propertyNodes.getLength();i++){
@@ -66,7 +75,16 @@ public final class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader{
                 Element propertyElement = (Element) propertyNode;
                 String name = propertyElement.getAttribute("name");
                 String value = propertyElement.getAttribute("value");
-                beanDefinition.getPropertyValues().addProperty(new PropertyValue(name,value));
+                if(value!=null&&!"".equals(value)){
+                    beanDefinition.getPropertyValues().addProperty(new PropertyValue(name,value));
+                }else {
+                    String ref = propertyElement.getAttribute("ref");
+                    if(ref!=null&&!"".equals(ref)){
+                        beanDefinition.getPropertyValues().addProperty(new PropertyValue(name,new BeanReference(ref)));
+                    }else
+                        throw new IllegalArgumentException("Configuration problem: <property> element for property '"
+                                + name + "' must specify a ref or value");
+                }
             }
         }
     }
