@@ -3,7 +3,7 @@ package com.zhangkie.tinyspring.context;
 import com.zhangkie.tinyspring.factory.AbstractBeanFactory;
 
 public abstract class AbstractApplicationContext implements ApplicationContext{
-    private AbstractBeanFactory beanFactory;
+    protected AbstractBeanFactory beanFactory;
 
     public AbstractApplicationContext(AbstractBeanFactory beanFactory) {
         this.beanFactory = beanFactory;

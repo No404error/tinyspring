@@ -9,9 +9,6 @@ import com.zhangkie.tinyspring.reader.XmlBeanDefinitionReader;
 import java.util.Map;
 
 public class ClassPathXmlApplicationContext extends AbstractApplicationContext{
-
-    private AbstractBeanFactory beanFactory;
-
     private String resourceLocation;
 
     public ClassPathXmlApplicationContext(String resourceLocation) throws Exception {
