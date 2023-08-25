@@ -8,27 +8,24 @@ import com.zhangkie.tinyspring.reader.XmlBeanDefinitionReader;
 
 import java.util.Map;
 
-public class ClassPathXmlApplicationContext implements ApplicationContext{
+public class ClassPathXmlApplicationContext extends AbstractApplicationContext{
 
     private AbstractBeanFactory beanFactory;
 
     private String resourceLocation;
 
-    public ClassPathXmlApplicationContext(String resourceLocation) {
+    public ClassPathXmlApplicationContext(String resourceLocation) throws Exception {
         this(resourceLocation,new AutoWireCapableBeanFactory());
     }
 
-    public ClassPathXmlApplicationContext(String resourceLocation, AbstractBeanFactory beanFactory) {
-        this.beanFactory = beanFactory;
-        this.resourceLocation = resourceLocation;
-        try {
-            refresh();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public ClassPathXmlApplicationContext(String resourceLocation, AbstractBeanFactory beanFactory) throws Exception {
+        super(beanFactory);
+        this.resourceLocation=resourceLocation;
+        refresh();
     }
 
-    protected void refresh() throws Exception {
+    @Override
+    public void refresh() throws Exception {
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new UrlResourceLoader());
         xmlBeanDefinitionReader.loadBeanDefinitions(resourceLocation);
         Map<String, BeanDefinition> registry = xmlBeanDefinitionReader.getRegistry();
@@ -36,10 +33,4 @@ public class ClassPathXmlApplicationContext implements ApplicationContext{
             beanFactory.registerBeanDefinition(entry.getKey(),entry.getValue());
         }
     }
-
-    @Override
-    public Object getBean(String beanName) throws Exception {
-        return beanFactory.getBean(beanName);
-    }
-
 }
