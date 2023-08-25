@@ -19,4 +19,8 @@
         <property name="user" ref="user"></property>
     </bean>
 
+    <bean id="sendService" class="com.zhangkie.tinyspring.aop.SendServiceImpl">
+
+    </bean>
+
 </beans>
