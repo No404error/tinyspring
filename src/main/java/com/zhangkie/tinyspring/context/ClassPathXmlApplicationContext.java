@@ -8,6 +8,9 @@ import com.zhangkie.tinyspring.reader.XmlBeanDefinitionReader;
 
 import java.util.Map;
 
+/**
+ * 定义了一个用xml初始容器的,且会提前初始化所有bean的context
+ */
 public class ClassPathXmlApplicationContext extends AbstractApplicationContext{
     private String resourceLocation;
 
@@ -21,8 +24,20 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext{
         refresh();
     }
 
+    /**
+     * 容器预先初始化所有bean
+     */
     @Override
-    public void refresh() throws Exception {
+    protected void onRefresh() throws Exception {
+        beanFactory.preInstantiateSingletons();
+    }
+
+    /**
+     * 用xml读取bean
+     * @throws Exception
+     */
+    @Override
+    protected void loadBeanDefinitions() throws Exception {
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new UrlResourceLoader());
         xmlBeanDefinitionReader.loadBeanDefinitions(resourceLocation);
         Map<String, BeanDefinition> registry = xmlBeanDefinitionReader.getRegistry();
