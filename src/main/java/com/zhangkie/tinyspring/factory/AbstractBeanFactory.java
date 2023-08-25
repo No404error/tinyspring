@@ -45,6 +45,17 @@ public abstract class AbstractBeanFactory implements BeanFactory{
     }
 
     /**
+     * 将beanPostProcessor提前注册
+     * @throws Exception
+     */
+    public final void registerBeanPostProcessors() throws Exception {
+        List<Object> beanPostProcessors = getBeansForType(BeanPostProcessor.class);
+        for (Object processor:beanPostProcessors){
+            addBeanPostProcessor((BeanPostProcessor) processor);
+        }
+    }
+
+    /**
      * 向beanFactory添加BeanPostProcessor
      * @param beanPostProcessor
      */
