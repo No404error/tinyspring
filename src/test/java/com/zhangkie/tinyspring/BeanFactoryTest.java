@@ -8,6 +8,7 @@ import com.zhangkie.tinyspring.reader.AbstractBeanDefinitionReader;
 import com.zhangkie.tinyspring.reader.XmlBeanDefinitionReader;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Map;
 
 public class BeanFactoryTest {
@@ -65,5 +66,30 @@ public class BeanFactoryTest {
 
         Object workSpace = beanFactory.getBean("workSpace");
         System.out.println(workSpace);
+    }
+
+    @Test
+    public void testBeanPostProcessor() throws Exception {
+        AbstractBeanFactory beanFactory=new AutoWireCapableBeanFactory();
+
+        BeanDefinition definition = new BeanDefinition();
+        definition.setBeanClassName("com.zhangkie.tinyspring.BeanInitializeLogger");
+        beanFactory.registerBeanDefinition("initLogger", definition);
+        BeanDefinition userDefinition = new BeanDefinition();
+        userDefinition.setBeanClassName("com.zhangkie.tinyspring.User");
+        PropertyValues propertyValues = new PropertyValues();
+        propertyValues.addProperty(new PropertyValue("name","cxk"));
+        propertyValues.addProperty(new PropertyValue("id","666666"));
+        userDefinition.setPropertyValues(propertyValues);
+        beanFactory.registerBeanDefinition("user", userDefinition);
+
+        List<Object> beans = beanFactory.getBeansForType(BeanPostProcessor.class);
+        for(Object obj:beans){
+            beanFactory.addBeanPostProcessor((BeanPostProcessor) obj);
+        }
+
+        User user = (User)beanFactory.getBean("user");
+
+        System.out.println(user);
     }
 }
