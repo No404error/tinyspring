@@ -8,24 +8,6 @@ import com.zhangkie.tinyspring.converter.StringToPrimitiveConverter;
 import java.lang.reflect.Field;
 
 public class AutoWireCapableBeanFactory extends AbstractBeanFactory{
-    /**
-     * 在创建bean时先实例化存入缓存,再为其完善,可避免循环依赖问题
-     * 即采用一级缓存的方式避免的循环依赖
-     * @param definition
-     * @return
-     * @throws Exception
-     */
-    @Override
-    protected Object doCreateBean(BeanDefinition definition) throws Exception {
-        Object bean=createBeanInstance(definition);
-        definition.setBean(bean);
-        applyPropertyValues(bean,definition);
-        return bean;
-    }
-
-    protected Object createBeanInstance(BeanDefinition definition) throws InstantiationException, IllegalAccessException {
-        return definition.getBeanClass().newInstance();
-    }
 
     /**
      * 在为bean添加属性时,若类型为beanRef,则创建引用类型
