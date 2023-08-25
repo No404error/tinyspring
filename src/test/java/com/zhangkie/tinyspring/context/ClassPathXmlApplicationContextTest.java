@@ -15,4 +15,15 @@ public class ClassPathXmlApplicationContextTest {
         workSpace = (WorkSpace) context.getBean("workSpace");
         System.out.println(workSpace);
     }
+
+    @Test
+    public void testContextWithBeanPostProcessor() throws Exception {
+        ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("tinyioc_process.xml");
+        User user = null;
+        user = (User) context.getBean("user");
+        System.out.println(user);
+        WorkSpace workSpace = null;
+        workSpace = (WorkSpace) context.getBean("workSpace");
+        System.out.println(workSpace);
+    }
 }
