@@ -1,21 +1,30 @@
-package com.zhangkie.tinyspring.aop.jdk;
+package com.zhangkie.tinyspring.aop;
 
+import com.zhangkie.tinyspring.TargetSource;
 import com.zhangkie.tinyspring.aop.weaver.MethodFilter;
 import org.aopalliance.intercept.MethodInterceptor;
 
 /**
  * 用于协助代理完成invoke调用
- * 作用1,提供代理必备参数:target,targetClass,methodInterceptor
- * 作用2,能够配合aspectJ expression来确定某个方法是否需要被代理(当filter为null时所有方法不代理)
+ * 作用1,提供代理必备参数:target,targetClass,interfaces,methodInterceptor
+ * 作用2,能够配合aspectJ 来确定某个方法是否需要被代理(当filter为null时所有方法默认代理)
  */
 public class AdvisedSupport {
 
-    private TargetSource targetSource;
+    protected TargetSource targetSource;
 
-    private MethodInterceptor methodInterceptor;
+    protected MethodInterceptor methodInterceptor;
 
-    private MethodFilter methodFilter;
+    protected MethodFilter methodFilter;
 
+    public AdvisedSupport() {
+    }
+
+    /**
+     * 默认所有方法都代理的filter
+     * @param targetSource
+     * @param methodInterceptor
+     */
     public AdvisedSupport(TargetSource targetSource, MethodInterceptor methodInterceptor) {
         this(targetSource,methodInterceptor,null);
     }
