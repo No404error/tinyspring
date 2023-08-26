@@ -1,20 +1,23 @@
-package com.zhangkie.tinyspring.aop.jdk;
+package com.zhangkie.tinyspring.aop;
 
-import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Method;
 
-public class ReflectiveMethodInterceptor implements MethodInvocation {
+/**
+ * 定义好了proceed的invocation
+ * proceed采用method直接调用
+ */
+public class ReflectiveMethodInvocation implements MethodInvocation {
 
-    private Object target;
+    protected Object target;
 
-    private Method method;
+    protected Method method;
 
-    private Object[] args;
+    protected Object[] args;
 
-    public ReflectiveMethodInterceptor(Object target, Method method, Object[] args) {
+    public ReflectiveMethodInvocation(Object target, Method method, Object[] args) {
         this.target = target;
         this.method = method;
         this.args = args;
