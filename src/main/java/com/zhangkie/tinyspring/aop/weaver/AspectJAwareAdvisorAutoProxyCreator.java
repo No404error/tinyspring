@@ -1,8 +1,9 @@
 package com.zhangkie.tinyspring.aop.weaver;
 
-import com.zhangkie.tinyspring.aop.jdk.AdvisedSupport;
+import com.zhangkie.tinyspring.aop.AdvisedSupport;
+import com.zhangkie.tinyspring.aop.ProxyFactory;
 import com.zhangkie.tinyspring.aop.jdk.JDKAopProxy;
-import com.zhangkie.tinyspring.aop.jdk.TargetSource;
+import com.zhangkie.tinyspring.TargetSource;
 import com.zhangkie.tinyspring.beans.BeanPostProcessor;
 import com.zhangkie.tinyspring.factory.AbstractBeanFactory;
 import com.zhangkie.tinyspring.factory.BeanFactory;
@@ -44,9 +45,12 @@ public class AspectJAwareAdvisorAutoProxyCreator implements BeanFactoryAware, Be
 
         for(AspectJExpressionPointcutAdvisor advisor:advisors){
             if(advisor.getPointcut().getClassFilter().match(bean.getClass())){
-                TargetSource targetSource = new TargetSource(bean,bean.getClass().getInterfaces());
-                AdvisedSupport advisedSupport = new AdvisedSupport(targetSource,(MethodInterceptor) advisor.getAdvice(),advisor.getPointcut().getMethodFilter());
-                bean=new JDKAopProxy(advisedSupport).getProxy();
+                TargetSource targetSource = new TargetSource(bean,bean.getClass(),bean.getClass().getInterfaces());
+                ProxyFactory proxyFactory=new ProxyFactory();
+                proxyFactory.setTargetSource(targetSource);
+                proxyFactory.setMethodInterceptor((MethodInterceptor) advisor.getAdvice());
+                proxyFactory.setMethodFilter(advisor.getPointcut().getMethodFilter());
+                bean=proxyFactory.getProxy();
             }
         }
         return bean;
