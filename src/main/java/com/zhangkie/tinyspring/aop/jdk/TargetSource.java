@@ -3,11 +3,16 @@ package com.zhangkie.tinyspring.aop.jdk;
 public class TargetSource {
     private Object target;
 
-    private Class targetClass;
+    private Class[] targetClasses;
 
     public TargetSource(Object target, Class targetClass) {
         this.target = target;
-        this.targetClass = targetClass;
+        this.targetClasses = new Class[]{targetClass};
+    }
+
+    public TargetSource(Object target, Class[] targetClasses) {
+        this.target = target;
+        this.targetClasses = targetClasses;
     }
 
     public Object getTarget() {
@@ -18,11 +23,11 @@ public class TargetSource {
         this.target = target;
     }
 
-    public Class getTargetClass() {
-        return targetClass;
+    public Class[] getTargetClasses() {
+        return targetClasses;
     }
 
-    public void setTargetClass(Class targetClass) {
-        this.targetClass = targetClass;
+    public void setTargetClasses(Class[] targetClasses) {
+        this.targetClasses = targetClasses;
     }
 }
