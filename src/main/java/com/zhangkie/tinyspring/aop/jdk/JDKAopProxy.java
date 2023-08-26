@@ -1,6 +1,7 @@
 package com.zhangkie.tinyspring.aop.jdk;
 
 import com.zhangkie.tinyspring.aop.AopProxy;
+import com.zhangkie.tinyspring.aop.weaver.MethodFilter;
 import org.aopalliance.intercept.MethodInterceptor;
 
 import java.lang.reflect.InvocationHandler;
@@ -17,12 +18,18 @@ public class JDKAopProxy implements AopProxy, InvocationHandler {
 
     @Override
     public Object getProxy() {
-        return Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[]{advisedSupport.getTargetSource().getTargetClass()},this);
+        return Proxy.newProxyInstance(this.getClass().getClassLoader(), advisedSupport.getTargetSource().getTargetClasses(),this);
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         MethodInterceptor methodInterceptor = advisedSupport.getMethodInterceptor();
-        return methodInterceptor.invoke(new ReflectiveMethodInterceptor(advisedSupport.getTargetSource().getTarget(),method,args));
+        MethodFilter methodFilter = advisedSupport.getMethodFilter();
+        //代理的方法在expression范围内
+        if(methodFilter!=null&&methodFilter.match(advisedSupport.getTargetSource().getTarget().getClass(),method))
+            return methodInterceptor.invoke(new ReflectiveMethodInterceptor(advisedSupport.getTargetSource().getTarget(),method,args));
+        else{
+            return method.invoke(advisedSupport.getTargetSource().getTarget(),args);
+        }
     }
 }
