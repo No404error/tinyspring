@@ -2,6 +2,7 @@ package com.zhangkie.tinyspring.context;
 
 import com.zhangkie.tinyspring.User;
 import com.zhangkie.tinyspring.WorkSpace;
+import com.zhangkie.tinyspring.aop.AliSendService;
 import com.zhangkie.tinyspring.aop.SendService;
 import org.junit.Test;
 
@@ -33,5 +34,14 @@ public class ClassPathXmlApplicationContextTest {
         ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("tinyioc_autoproxy.xml");
         SendService sendService = (SendService) context.getBean("sendService");
         sendService.send();
+    }
+
+    @Test
+    public void testContextWithAutoProxyFactory() throws Exception {
+        ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("tinyioc_autoproxy_proxyfactory.xml");
+        SendService sendService = (SendService) context.getBean("sendService");
+        sendService.send();
+        AliSendService aliSendService = (AliSendService) context.getBean("aliSendService");
+        aliSendService.send();
     }
 }
