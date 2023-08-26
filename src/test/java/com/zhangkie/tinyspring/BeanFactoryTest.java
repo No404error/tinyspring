@@ -1,6 +1,10 @@
 package com.zhangkie.tinyspring;
 
 
+import com.zhangkie.tinyspring.beans.BeanDefinition;
+import com.zhangkie.tinyspring.beans.BeanPostProcessor;
+import com.zhangkie.tinyspring.beans.PropertyValue;
+import com.zhangkie.tinyspring.beans.PropertyValues;
 import com.zhangkie.tinyspring.factory.AbstractBeanFactory;
 import com.zhangkie.tinyspring.factory.AutoWireCapableBeanFactory;
 import com.zhangkie.tinyspring.io.UrlResourceLoader;

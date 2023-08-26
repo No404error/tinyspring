@@ -1,7 +1,7 @@
 package com.zhangkie.tinyspring.factory;
 
-import com.zhangkie.tinyspring.BeanDefinition;
-import com.zhangkie.tinyspring.BeanPostProcessor;
+import com.zhangkie.tinyspring.beans.BeanDefinition;
+import com.zhangkie.tinyspring.beans.BeanPostProcessor;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

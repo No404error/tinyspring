@@ -1,4 +1,4 @@
-package com.zhangkie.tinyspring;
+package com.zhangkie.tinyspring.beans;
 
 /**
  *用于描述bean定义，能采用该定义生成bean，及存储bean

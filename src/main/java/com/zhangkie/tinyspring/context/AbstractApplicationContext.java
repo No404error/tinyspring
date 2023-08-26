@@ -1,9 +1,6 @@
 package com.zhangkie.tinyspring.context;
 
-import com.zhangkie.tinyspring.BeanPostProcessor;
 import com.zhangkie.tinyspring.factory.AbstractBeanFactory;
-
-import java.util.List;
 
 public abstract class AbstractApplicationContext implements ApplicationContext{
     protected AbstractBeanFactory beanFactory;

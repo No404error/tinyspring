@@ -1,4 +1,4 @@
-package com.zhangkie.tinyspring;
+package com.zhangkie.tinyspring.beans;
 
 import java.util.ArrayList;
 import java.util.List;

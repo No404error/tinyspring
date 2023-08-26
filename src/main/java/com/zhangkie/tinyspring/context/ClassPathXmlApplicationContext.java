@@ -1,6 +1,6 @@
 package com.zhangkie.tinyspring.context;
 
-import com.zhangkie.tinyspring.BeanDefinition;
+import com.zhangkie.tinyspring.beans.BeanDefinition;
 import com.zhangkie.tinyspring.factory.AbstractBeanFactory;
 import com.zhangkie.tinyspring.factory.AutoWireCapableBeanFactory;
 import com.zhangkie.tinyspring.io.UrlResourceLoader;

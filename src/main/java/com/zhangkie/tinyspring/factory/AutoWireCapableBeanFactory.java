@@ -1,8 +1,8 @@
 package com.zhangkie.tinyspring.factory;
 
-import com.zhangkie.tinyspring.BeanDefinition;
-import com.zhangkie.tinyspring.BeanReference;
-import com.zhangkie.tinyspring.PropertyValue;
+import com.zhangkie.tinyspring.beans.BeanDefinition;
+import com.zhangkie.tinyspring.beans.BeanReference;
+import com.zhangkie.tinyspring.beans.PropertyValue;
 import com.zhangkie.tinyspring.converter.StringToPrimitiveConverter;
 
 import java.lang.reflect.Field;

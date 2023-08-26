@@ -1,4 +1,4 @@
-package com.zhangkie.tinyspring;
+package com.zhangkie.tinyspring.beans;
 
 /**
  * 扩展接口,方便在bean实例化前后添加自定义行为

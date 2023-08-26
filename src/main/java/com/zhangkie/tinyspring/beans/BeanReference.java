@@ -1,4 +1,4 @@
-package com.zhangkie.tinyspring;
+package com.zhangkie.tinyspring.beans;
 
 public class BeanReference {
     private Object bean;
